@@ -54,6 +54,7 @@ import {
 import Link from "next/link";
 import Filter from "./_components/filter";
 import SearchInput from "./_components/search-input";
+import { Suspense } from "react";
 
 const address = "Joynagar lane 1, Agartala, Tripura";
 
@@ -84,7 +85,9 @@ export default async function Page({
         </div>
       </header>
       <div className="flex justify-between items-center gap-3">
-        <SearchInput />
+        <Suspense>
+          <SearchInput />
+        </Suspense>
         <Popover>
           <PopoverTrigger asChild>
             <Button variant={"outline"} className="px-3">
@@ -93,7 +96,9 @@ export default async function Page({
             </Button>
           </PopoverTrigger>
           <PopoverContent align="end" className="border-2">
-            <Filter />
+            <Suspense>
+              <Filter />
+            </Suspense>
           </PopoverContent>
         </Popover>
       </div>
